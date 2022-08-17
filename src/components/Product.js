@@ -1,0 +1,168 @@
+import React from 'react'
+import { useState } from 'react'
+
+function Product({basket,total, money, setBasket,product}) {
+
+    const basketItem = basket.find(item => item.id === product.id)
+
+    const addBasket = () => {
+        const checkBasket = basket.find(item=> item.id === product.id)
+        //ürün daha önce eklenmiş
+        if (checkBasket){
+
+                checkBasket.amount += 1
+                setBasket([...basket.filter(item => item.id !== product.id), checkBasket])
+            }
+            
+            
+        else{
+            setBasket([...basket, {
+                id: product.id,
+                amount: 1
+            }])
+        }
+    }
+
+    const removeBasket = () => {
+        const currentBasket = basket.find(item => item.id === product.id)
+        const basketWithoutCurrent = basket.filter(item=> item.id !== product.id)
+         currentBasket.amount -= 1
+        if (currentBasket.amount === 0) {
+            setBasket([...basketWithoutCurrent])
+
+        }else {
+            setBasket([...basketWithoutCurrent, currentBasket])
+        }
+
+    }
+
+
+  return (
+                 
+    <div className="product"> 
+        <img src={product.image} alt=""/> 
+        <h6>{product.title}</h6>
+        <div className="price"> $ {product.price}</div>
+        <div className="actions">
+
+            <button class="sell-btn" disabled={!basketItem} onClick={removeBasket}>
+                Sat
+                </button> 
+            <span className="amount action ">
+                {basketItem && basketItem.amount || 0 }
+                </span>
+            <button class="buy-btn"disabled={total + product.price > money} onClick={addBasket}>
+                 Satın Al
+                 </button>
+        </div>
+            
+        
+            
+        
+       
+
+
+
+
+
+
+
+            <style jsx>{`
+            .product {
+                padding: 15px;
+                background: #fff;
+                border: 1px solid #ddd;
+                margin-bottom: 20px; 
+                width: 24%;
+                height: 332px;
+
+
+              
+
+            }
+
+            .product img {
+                width:100%;
+                height:40%;
+            }
+
+            .product h6{
+                font-size: 20px;
+                margin-bottom: 10px;
+
+            }
+            .product .price (
+                font-size: 20px;
+                color : green;
+                font-type:bold;
+            )
+
+            .actions{
+                display: flex;
+                align-items:center;
+                margin-top:15px;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                flex:1;
+            }
+
+
+            
+
+            .actions{
+                display: flex;
+
+            }
+
+            .actions button {
+                height: 40px;
+                width: 35%;
+                padding: 0 15px;
+                flex: 1;
+                cursor: pointer;
+            }
+
+            .actions .buy-btn{
+                background: #61dafb;
+                font-size: 14px;
+                font-weight:500;
+                border-radius:0 4px 4px 0;
+            }
+
+            .actions .sell-btn{
+                background: #ccc;
+                font-size: 14px;
+                color: #333;
+                font-weight:500;
+                border-radius: 4px 0 0 4px ;
+            }
+
+            .action button[disabled]{
+                opacity: 0.3;
+                cursor: not-alowed;
+            }
+
+             .actions .amount {
+                width: 30%;
+                text-align:center;
+                border: 1px solid #ddd;
+                height: 40px;
+                display: flex;
+
+                
+                align-items:center;
+                justify-content: center;
+                font-size: 17px;
+                font-weight: bold;
+                color: #555;
+            } 
+            
+
+
+        `  }</style>
+    </div>
+  
+  )
+}
+
+export default Product

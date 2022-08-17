@@ -1,0 +1,29 @@
+
+[
+{
+    "id": 1,
+    "title": "Sakız",
+    "price": 0.5,
+    "image":"https://migros-dali-storage-prod.global.ssl.fastly.net/sanalmarket/product/07124238/07124238-be7324-1650x1650.jpg"
+},
+{
+    "id": 2,
+    "title": "Kola",
+    "price": 5,
+    "image":"https://cdn.cimri.io/market/260x260/coca-cola-200-ml-24lu-kutu-kola-_284903.jpg"
+},
+{
+    "id": 3,
+    "title": "Ayakkabı",
+    "price": 400,
+    "image":"https://floimages.mncdn.com/media/catalog/product/21-11/15/yazkis-kadin-siyah-uzun-keten-spor-ayakkabi-7331-1636983824.JPG"
+},
+{
+    "id": 4,
+    "title": "Araba",
+    "price":400000,
+    "image":"https://productimages.hepsiburada.net/s/33/1500/10417706991666.jpg"
+}
+]
+
+
